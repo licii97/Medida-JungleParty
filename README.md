@@ -1,4 +1,4 @@
-"# Medida-JungleParty" 
+# Medida-JungleParty 
 
 Allgemein für das gesamte Praktikum
 
