@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - text
+  - bild
+  - pause
+  - help
+  - exit
   layers:
   - Default
   - TransparentFX
