@@ -22,6 +22,13 @@ public class ManageScript : MonoBehaviour {
         if (endGameCounter == 0){
             print("Spiel vorbei");
         }
+        else if (endGameCounter == 40){
+            Destroy(GameObject.Find("leave 1"));
+        }
+        else if (endGameCounter == 20)
+        {
+            Destroy(GameObject.Find("leave 2"));
+        }
 
         // 0 = linke Maustaste
         if (Input.GetMouseButtonDown(0)){
