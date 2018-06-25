@@ -9,6 +9,7 @@ TagManager:
   - pause
   - help
   - exit
+  - leave
   layers:
   - Default
   - TransparentFX

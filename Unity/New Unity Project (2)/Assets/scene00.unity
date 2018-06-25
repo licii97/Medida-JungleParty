@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3618,6 +3618,9 @@ MonoBehaviour:
   collidedTextObject: {fileID: 0}
   collidedTextObjectName: 
   endGameCounter: 60
+  firstLeave: []
+  secondLeave: []
+  thirdLeave: []
 --- !u!4 &650390767
 Transform:
   m_ObjectHideFlags: 0
@@ -7346,7 +7349,7 @@ GameObject:
   - component: {fileID: 1380975663}
   - component: {fileID: 1380975662}
   m_Layer: 0
-  m_Name: mokeyFood
+  m_Name: monkeyFood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8821,7 +8824,7 @@ GameObject:
   - component: {fileID: 1962301985}
   - component: {fileID: 1962301987}
   m_Layer: 0
-  m_Name: apfel 1
+  m_Name: apple 1
   m_TagString: bild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9549,7 +9552,7 @@ GameObject:
   - component: {fileID: 2010585680}
   - component: {fileID: 2010585679}
   m_Layer: 0
-  m_Name: apfel 2
+  m_Name: apple 2
   m_TagString: text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
