@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ManageScript : MonoBehaviour {
 
-    //public Vector3 mousePos;
-    //public Vector2 mousePos2D;
-    //public Vector3 mousePosWorld;
-    //public RaycastHit2D hit;
     public Camera mainCamera;
     public GameObject collidedTextObject;
     public string collidedTextObjectName;
@@ -16,6 +12,9 @@ public class ManageScript : MonoBehaviour {
     public List<GameObject> firstLeave = new List<GameObject>();
     public List<GameObject> secondLeave = new List<GameObject>();
     public List<GameObject> thirdLeave = new List<GameObject>();
+    public List<GameObject> helpPage = new List<GameObject>();
+    public List<GameObject> pausePage = new List<GameObject>();
+    public List<GameObject> gameDonePage = new List<GameObject>();
 
 
     // Use this for initialization
@@ -31,6 +30,11 @@ public class ManageScript : MonoBehaviour {
         
         if (endGameCounter == 0){
             print("Spiel vorbei");
+
+             foreach (GameObject o in gameDonePage)
+              {
+                    o.SetActive(true);
+              }
         }
 
         else if (endGameCounter == 40){
@@ -49,8 +53,8 @@ public class ManageScript : MonoBehaviour {
             {
                 o.SetActive(true);
             }
-            //Destroy(GameObject.Find("leave 2"));
-            GameObject.Find("leave 2").SetActive(false);
+            Destroy(GameObject.Find("leave 2"));
+            //GameObject.Find("leave 2").SetActive(false);
         }
 
         // 0 = linke Maustaste
@@ -70,6 +74,36 @@ public class ManageScript : MonoBehaviour {
                         Destroy(hit.collider.gameObject);
                         Destroy(collidedTextObject);
                         endGameCounter -= 2;
+                    }
+                }
+
+                if(hit.collider.gameObject.tag == "help")
+                {
+                    foreach (GameObject o in helpPage)
+                    {
+                        o.SetActive(true);
+                    }
+                }
+                if (hit.collider.gameObject.tag == "anleitungBack")
+                {
+                    foreach (GameObject o in helpPage)
+                    {
+                        o.SetActive(false);
+                    }
+                }
+
+                if (hit.collider.gameObject.tag == "pause")
+                {
+                    foreach (GameObject o in pausePage)
+                    {
+                        o.SetActive(true);
+                    }
+                }
+                if (hit.collider.gameObject.name == "pauseBack")
+                {
+                    foreach (GameObject o in pausePage)
+                    {
+                        o.SetActive(false);
                     }
                 }
             }
@@ -107,6 +141,21 @@ public class ManageScript : MonoBehaviour {
 
     void InstantiateLists()
     {
+        helpPage.Add(GameObject.Find("anleitung"));
+        helpPage.Add(GameObject.Find("anleitungBack"));
+
+        foreach (GameObject o in helpPage){o.SetActive(false);}
+
+        pausePage.Add(GameObject.Find("pausePage"));
+        pausePage.Add(GameObject.Find("pauseBack"));
+
+        foreach (GameObject o in pausePage){o.SetActive(false);}
+
+        gameDonePage.Add(GameObject.Find("levelDone"));
+        gameDonePage.Add(GameObject.Find("levelBack"));
+
+        foreach (GameObject o in gameDonePage){o.SetActive(false);}
+
         // Vokabeln zu Listen adden
         //List1 
         firstLeave.Add(GameObject.Find("apple 2"));
@@ -120,10 +169,7 @@ public class ManageScript : MonoBehaviour {
         firstLeave.Add(GameObject.Find("onion 2"));
         firstLeave.Add(GameObject.Find("cherry 2"));
 
-        foreach (GameObject o in firstLeave)
-        {
-            o.SetActive(true);
-        }
+        foreach (GameObject o in firstLeave){o.SetActive(true);}
 
         //List2
         secondLeave.Add(GameObject.Find("glass 2"));
@@ -138,12 +184,8 @@ public class ManageScript : MonoBehaviour {
         secondLeave.Add(GameObject.Find("cucumber 2"));
 
         //ELemente aus Liste inaktiv setzen 
-        foreach (GameObject o in secondLeave)
-        {
-            o.SetActive(false);
-        }
-
-        
+        foreach (GameObject o in secondLeave){o.SetActive(false);}
+  
         //List3
         thirdLeave.Add(GameObject.Find("tomato 2"));
         thirdLeave.Add(GameObject.Find("cheese 2"));
@@ -157,11 +199,7 @@ public class ManageScript : MonoBehaviour {
         thirdLeave.Add(GameObject.Find("banana 2"));
 
         //ELemente aus Liste inaktiv setzen 
-        foreach (GameObject o in thirdLeave)
-        {
-            o.SetActive(false);
-        }
-                       
+        foreach (GameObject o in thirdLeave){o.SetActive(false);}  
     }
 }
 
