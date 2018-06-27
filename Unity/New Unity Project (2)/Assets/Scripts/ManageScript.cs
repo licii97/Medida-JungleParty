@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManageScript : MonoBehaviour {
 
@@ -18,107 +19,115 @@ public class ManageScript : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start(){
+    void Start() {
         SetLeavesActive();
-        InstantiateLists(); 
-        
+        InstantiateLists();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (endGameCounter == 0){
+
+        if (endGameCounter == 0) {
             print("Spiel vorbei");
 
-             foreach (GameObject o in gameDonePage)
-              {
+            foreach (GameObject o in gameDonePage)
+            {
+                o.SetActive(true);
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
+                if (hit.collider.gameObject.name == "levelBack")
+                {
+                    SceneManager.LoadScene("Leveluebersicht");
+                }
+            }
+
+            else if (endGameCounter == 40) {
+                foreach (GameObject o in secondLeave)
+                {
                     o.SetActive(true);
-              }
-        }
+                }
 
-        else if (endGameCounter == 40){
-            foreach(GameObject o in secondLeave)
+                Destroy(GameObject.Find("leave 1"));
+                //GameObject.Find("leave 1").SetActive(false);
+            }
+
+            else if (endGameCounter == 20)
             {
-                o.SetActive(true);
+                foreach (GameObject o in thirdLeave)
+                {
+                    o.SetActive(true);
+                }
+                Destroy(GameObject.Find("leave 2"));
+                //GameObject.Find("leave 2").SetActive(false);
             }
 
-            Destroy(GameObject.Find("leave 1"));
-            //GameObject.Find("leave 1").SetActive(false);
-        }
+            // 0 = linke Maustaste
+            if (Input.GetMouseButtonDown(0)) {
+                RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
 
-        else if (endGameCounter == 20)
-        {
-            foreach (GameObject o in thirdLeave)
-            {
-                o.SetActive(true);
+                if (hit.collider != null) {
+                    print("Name: " + hit.collider.gameObject.name);
+                    print("Tag: " + hit.collider.gameObject.tag);
+
+                    if (hit.collider.gameObject.tag == "text") {
+                        SaveTextObject(hit.collider.gameObject);
+                    }
+
+                    if (hit.collider.gameObject.tag == "bild") {
+                        if (GetNameOfObject(hit.collider.gameObject) == collidedTextObjectName) {
+                            Destroy(hit.collider.gameObject);
+                            Destroy(collidedTextObject);
+                            endGameCounter -= 2;
+                        }
+                    }
+
+                    if (hit.collider.gameObject.tag == "help")
+                    {
+                        foreach (GameObject o in helpPage)
+                        {
+                            o.SetActive(true);
+                        }
+                    }
+                    if (hit.collider.gameObject.tag == "anleitungBack")
+                    {
+                        foreach (GameObject o in helpPage)
+                        {
+                            o.SetActive(false);
+                        }
+                    }
+
+                    if (hit.collider.gameObject.tag == "pause")
+                    {
+                        foreach (GameObject o in pausePage)
+                        {
+                            o.SetActive(true);
+                        }
+                    }
+                    if (hit.collider.gameObject.name == "pauseBack")
+                    {
+                        foreach (GameObject o in pausePage)
+                        {
+                            o.SetActive(false);
+                        }
+                    }
+                }
+
             }
-            Destroy(GameObject.Find("leave 2"));
-            //GameObject.Find("leave 2").SetActive(false);
-        }
-
-        // 0 = linke Maustaste
-        if (Input.GetMouseButtonDown(0)){
-            RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
-
-            if (hit.collider != null){
-                print("Name: " + hit.collider.gameObject.name);
-                print("Tag: " + hit.collider.gameObject.tag);
-
-                if (hit.collider.gameObject.tag == "text"){
-                    SaveTextObject(hit.collider.gameObject);
-                }
-
-                if (hit.collider.gameObject.tag == "bild"){
-                    if (GetNameOfObject(hit.collider.gameObject) == collidedTextObjectName){
-                        Destroy(hit.collider.gameObject);
-                        Destroy(collidedTextObject);
-                        endGameCounter -= 2;
-                    }
-                }
-
-                if(hit.collider.gameObject.tag == "help")
-                {
-                    foreach (GameObject o in helpPage)
-                    {
-                        o.SetActive(true);
-                    }
-                }
-                if (hit.collider.gameObject.tag == "anleitungBack")
-                {
-                    foreach (GameObject o in helpPage)
-                    {
-                        o.SetActive(false);
-                    }
-                }
-
-                if (hit.collider.gameObject.tag == "pause")
-                {
-                    foreach (GameObject o in pausePage)
-                    {
-                        o.SetActive(true);
-                    }
-                }
-                if (hit.collider.gameObject.name == "pauseBack")
-                {
-                    foreach (GameObject o in pausePage)
-                    {
-                        o.SetActive(false);
-                    }
-                }
-            }
-            
         }
     }
 
-    void SaveTextObject(GameObject collidedObject )
+    void SaveTextObject(GameObject collidedObject)
     {
         collidedTextObject = collidedObject;
         string[] objectName = collidedTextObject.name.Split(' ');
         collidedTextObjectName = objectName[0];
     }
 
-    string GetNameOfObject (GameObject collidedObject)
+    string GetNameOfObject(GameObject collidedObject)
     {
         string[] name = collidedObject.name.Split(' ');
         return name[0];
@@ -144,17 +153,17 @@ public class ManageScript : MonoBehaviour {
         helpPage.Add(GameObject.Find("anleitung"));
         helpPage.Add(GameObject.Find("anleitungBack"));
 
-        foreach (GameObject o in helpPage){o.SetActive(false);}
+        foreach (GameObject o in helpPage) { o.SetActive(false); }
 
         pausePage.Add(GameObject.Find("pausePage"));
         pausePage.Add(GameObject.Find("pauseBack"));
 
-        foreach (GameObject o in pausePage){o.SetActive(false);}
+        foreach (GameObject o in pausePage) { o.SetActive(false); }
 
         gameDonePage.Add(GameObject.Find("levelDone"));
         gameDonePage.Add(GameObject.Find("levelBack"));
 
-        foreach (GameObject o in gameDonePage){o.SetActive(false);}
+        foreach (GameObject o in gameDonePage) { o.SetActive(false); }
 
         // Vokabeln zu Listen adden
         //List1 
@@ -169,7 +178,7 @@ public class ManageScript : MonoBehaviour {
         firstLeave.Add(GameObject.Find("onion 2"));
         firstLeave.Add(GameObject.Find("cherry 2"));
 
-        foreach (GameObject o in firstLeave){o.SetActive(true);}
+        foreach (GameObject o in firstLeave) { o.SetActive(true); }
 
         //List2
         secondLeave.Add(GameObject.Find("glass 2"));
@@ -184,8 +193,8 @@ public class ManageScript : MonoBehaviour {
         secondLeave.Add(GameObject.Find("cucumber 2"));
 
         //ELemente aus Liste inaktiv setzen 
-        foreach (GameObject o in secondLeave){o.SetActive(false);}
-  
+        foreach (GameObject o in secondLeave) { o.SetActive(false); }
+
         //List3
         thirdLeave.Add(GameObject.Find("tomato 2"));
         thirdLeave.Add(GameObject.Find("cheese 2"));
@@ -199,9 +208,10 @@ public class ManageScript : MonoBehaviour {
         thirdLeave.Add(GameObject.Find("banana 2"));
 
         //ELemente aus Liste inaktiv setzen 
-        foreach (GameObject o in thirdLeave){o.SetActive(false);}  
+        foreach (GameObject o in thirdLeave) { o.SetActive(false); }
     }
 }
+
 
 
 

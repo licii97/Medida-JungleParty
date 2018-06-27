@@ -12,6 +12,7 @@ TagManager:
   - leave
   - anleitung
   - anleitungBack
+  - level
   layers:
   - Default
   - TransparentFX

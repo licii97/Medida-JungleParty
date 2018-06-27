@@ -59,8 +59,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LevelManager.cs" />
     <Compile Include="Assets\Scripts\BubbleMovement.cs" />
     <Compile Include="Assets\Scripts\BubbleSpawner.cs" />
+    <Compile Include="Assets\Scripts\ManageLevel.cs" />
     <Compile Include="Assets\Scripts\ManageScript.cs" />
     <Compile Include="Assets\Scripts\playerController.cs" />
     <Compile Include="Assets\Scripts\Progress.cs" />
