@@ -16,6 +16,7 @@ public class ManageScript : MonoBehaviour {
     public List<GameObject> helpPage = new List<GameObject>();
     public List<GameObject> pausePage = new List<GameObject>();
     public List<GameObject> gameDonePage = new List<GameObject>();
+    public ManageLevel manageLevel; 
 
 
     // Use this for initialization
@@ -29,9 +30,8 @@ public class ManageScript : MonoBehaviour {
     void Update()
     {
 
-        if (endGameCounter == 0) {
-            print("Spiel vorbei");
-
+        if (endGameCounter == 0)
+        {
             foreach (GameObject o in gameDonePage)
             {
                 o.SetActive(true);
@@ -44,79 +44,81 @@ public class ManageScript : MonoBehaviour {
                     SceneManager.LoadScene("Leveluebersicht");
                 }
             }
+        }
 
-            else if (endGameCounter == 40) {
-                foreach (GameObject o in secondLeave)
-                {
-                    o.SetActive(true);
-                }
-
-                Destroy(GameObject.Find("leave 1"));
-                //GameObject.Find("leave 1").SetActive(false);
-            }
-
-            else if (endGameCounter == 20)
+        else if (endGameCounter == 40)
+        {
+            foreach (GameObject o in secondLeave)
             {
-                foreach (GameObject o in thirdLeave)
+                o.SetActive(true);
+            }
+
+            Destroy(GameObject.Find("leave 1"));
+            //GameObject.Find("leave 1").SetActive(false);
+           
+        }
+
+        else if (endGameCounter == 20)
+        {
+            foreach (GameObject o in thirdLeave)
+            {
+                o.SetActive(true);
+            }
+            Destroy(GameObject.Find("leave 2"));
+            //GameObject.Find("leave 2").SetActive(false);
+        }
+
+        // 0 = linke Maustaste
+        if (Input.GetMouseButtonDown(0)) {
+            RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
+
+            if (hit.collider != null) {
+                print("Name: " + hit.collider.gameObject.name);
+                print("Tag: " + hit.collider.gameObject.tag);
+
+                if (hit.collider.gameObject.tag == "text") {
+                    SaveTextObject(hit.collider.gameObject);
+                }
+
+                if (hit.collider.gameObject.tag == "bild") {
+                    if (GetNameOfObject(hit.collider.gameObject) == collidedTextObjectName) {
+                        Destroy(hit.collider.gameObject);
+                        Destroy(collidedTextObject);
+                        endGameCounter -= 2;
+                    }
+                }
+
+                if (hit.collider.gameObject.tag == "help")
                 {
-                    o.SetActive(true);
+                    foreach (GameObject o in helpPage)
+                    {
+                        o.SetActive(true);
+                    }
                 }
-                Destroy(GameObject.Find("leave 2"));
-                //GameObject.Find("leave 2").SetActive(false);
-            }
-
-            // 0 = linke Maustaste
-            if (Input.GetMouseButtonDown(0)) {
-                RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
-
-                if (hit.collider != null) {
-                    print("Name: " + hit.collider.gameObject.name);
-                    print("Tag: " + hit.collider.gameObject.tag);
-
-                    if (hit.collider.gameObject.tag == "text") {
-                        SaveTextObject(hit.collider.gameObject);
-                    }
-
-                    if (hit.collider.gameObject.tag == "bild") {
-                        if (GetNameOfObject(hit.collider.gameObject) == collidedTextObjectName) {
-                            Destroy(hit.collider.gameObject);
-                            Destroy(collidedTextObject);
-                            endGameCounter -= 2;
-                        }
-                    }
-
-                    if (hit.collider.gameObject.tag == "help")
+                if (hit.collider.gameObject.tag == "anleitungBack")
+                {
+                    foreach (GameObject o in helpPage)
                     {
-                        foreach (GameObject o in helpPage)
-                        {
-                            o.SetActive(true);
-                        }
-                    }
-                    if (hit.collider.gameObject.tag == "anleitungBack")
-                    {
-                        foreach (GameObject o in helpPage)
-                        {
-                            o.SetActive(false);
-                        }
-                    }
-
-                    if (hit.collider.gameObject.tag == "pause")
-                    {
-                        foreach (GameObject o in pausePage)
-                        {
-                            o.SetActive(true);
-                        }
-                    }
-                    if (hit.collider.gameObject.name == "pauseBack")
-                    {
-                        foreach (GameObject o in pausePage)
-                        {
-                            o.SetActive(false);
-                        }
+                        o.SetActive(false);
                     }
                 }
 
+                if (hit.collider.gameObject.tag == "pause")
+                {
+                    foreach (GameObject o in pausePage)
+                    {
+                        o.SetActive(true);
+                    }
+                }
+                if (hit.collider.gameObject.name == "pauseBack")
+                {
+                    foreach (GameObject o in pausePage)
+                    {
+                        o.SetActive(false);
+                    }
+                }
             }
+
         }
     }
 
