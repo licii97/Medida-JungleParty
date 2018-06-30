@@ -10,6 +10,7 @@ public class BubbleSpawner : MonoBehaviour {
 	private float lastspawn = 0;
 
 	public GameObject[] bubbles;
+    public int randomrange;
 	public GameObject scroll;
 	private Scrolling scrolling;
 	private Quaternion rotation;
@@ -28,7 +29,7 @@ public class BubbleSpawner : MonoBehaviour {
 		speed = scrolling.scrollSpeed;
 
 		if(Time.time > lastspawn + rate/speed){
-			random = Random.Range(0,2);
+			random = Random.Range(0,randomrange);
 			Instantiate(bubbles[random], spawn, rotation);
 			lastspawn = Time.time;
 		}
