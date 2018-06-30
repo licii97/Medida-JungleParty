@@ -11,16 +11,11 @@ public class Progress : MonoBehaviour {
 	public float progressrate;
 	public float progress=0;
     public List<GameObject> levelDoneScreen = new List<GameObject>();
-	
 
 	// Use this for initialization
 	void Start () {
 		updateBar();
-        levelDoneScreen.Add(GameObject.Find("levelDone"));
-        levelDoneScreen.Add(GameObject.Find("pfeil"));
-       
-    
-
+        InstantiateLists();
     }
 
     // Update is called once per frame
@@ -29,10 +24,7 @@ public class Progress : MonoBehaviour {
         // resize Bar
         if (progress == 100)
         {
-            SceneManager.LoadScene("Leveluebersicht");
-            /**
-            levelDoneScreen[0].SetActive(true);
-            levelDoneScreen[1].SetActive(true);
+            foreach (GameObject o in levelDoneScreen){o.SetActive(true);}
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -41,23 +33,16 @@ public class Progress : MonoBehaviour {
                 {
                     SceneManager.LoadScene("Leveluebersicht");
                 }
-            }*/
+            }
+            //SceneManager.LoadScene("Leveluebersicht");
+          
         }
-    }
-
-        
+    }  
 	
 	// Update Progress
 	public void LevelProgress () {
 		con = Player.GetComponent<playerController>();
-		if (progress >= 100){
-            foreach (GameObject o in con.getLevelDoneScreen())
-            {
-                o.SetActive(false);
-            }
-
-
-        }
+		if (progress >= 100){ }
 		if (progress >= 90){
 			if (con.getRight() >= 10) {
 				progress = 100;
@@ -76,6 +61,13 @@ public class Progress : MonoBehaviour {
 	public void updateBar(){
 		Bar.transform.localScale = new Vector3(progress*0.01f*0.7f, 0.7f, 0.7f);
 	}
+
+    void InstantiateLists()
+    {
+        levelDoneScreen.Add(GameObject.Find("levelDone"));
+        levelDoneScreen.Add(GameObject.Find("pfeil"));
+        foreach (GameObject o in levelDoneScreen) { o.SetActive(false); }
+    }
 
     RaycastHit2D GetHitFromMousePosition(Vector3 mousePos)
     {

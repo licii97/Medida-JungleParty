@@ -881,7 +881,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 1000
   Scroll: {fileID: 1034990555}
-  levelDoneScreen: []
 --- !u!212 &575326518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -935,7 +934,7 @@ Transform:
   m_GameObject: {fileID: 575326516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.52, y: 0.03, z: 2.6271274}
-  m_LocalScale: {x: 0.3349155, y: 0.3370716, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -2740,7 +2739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904924598f360b242b608bb79f2b3610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 519420031}
   Player: {fileID: 575326516}
   Bar: {fileID: 1172018521}
   progressrate: 5
@@ -3354,8 +3353,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1697236532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.17384768, y: 0.17384751, z: 0.69539005}
+  m_LocalPosition: {x: 0.02, y: 0.013, z: 0}
+  m_LocalScale: {x: 0.17933792, y: 0.17933775, z: 0.717351}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14

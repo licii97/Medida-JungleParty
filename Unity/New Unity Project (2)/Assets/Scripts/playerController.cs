@@ -10,7 +10,6 @@ public class playerController : MonoBehaviour {
 	private Scrolling scrolling;
 	public static playerController Instance;
 	private int right= 0;
-    public List<GameObject> levelDoneScreen = new List<GameObject>(); 
 
 
 	void Awake(){
@@ -18,12 +17,6 @@ public class playerController : MonoBehaviour {
 	}
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
-        levelDoneScreen.Add(GameObject.Find("levelDone"));
-        levelDoneScreen.Add(GameObject.Find("pfeil"));
-        foreach (GameObject o in levelDoneScreen)
-        {
-            o.SetActive(false);
-        }
 }
 
 	void FixedUpdate () {
@@ -49,9 +42,4 @@ public class playerController : MonoBehaviour {
 	public int getRight(){
 		return right;
 	} 
-
-    public List<GameObject> getLevelDoneScreen()
-    {
-        return levelDoneScreen;
-    }
 }
