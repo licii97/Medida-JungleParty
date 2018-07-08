@@ -18,6 +18,8 @@ public class ManageScript : MonoBehaviour {
     public List<GameObject> pausePage = new List<GameObject>();
     public List<GameObject> gameDonePage = new List<GameObject>();
     public List<GameObject> textHighlights = new List<GameObject>();
+    public List<GameObject> feedback = new List<GameObject>();
+
     public ManageLevel manageLevel; 
 
 
@@ -73,6 +75,7 @@ public class ManageScript : MonoBehaviour {
         // 0 = linke Maustaste
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
+            foreach (GameObject o in feedback) { o.SetActive(false); }
 
             if (hit.collider != null) {
                 //print("Name: " + hit.collider.gameObject.name);
@@ -85,12 +88,15 @@ public class ManageScript : MonoBehaviour {
 
                 if (hit.collider.gameObject.tag == "bild") {
                     if (GetNameOfObject(hit.collider.gameObject) == collidedTextObjectName) {
+                        feedback[0].SetActive(true);
                         Destroy(hit.collider.gameObject);
                         Destroy(collidedTextObject);
                         Destroy(GetHighlightedObject());
                         endGameCounter -= 2;
                     }
+                    else { feedback[1].SetActive(true); }
                 }
+                
 
                 if (hit.collider.gameObject.tag == "help")
                 {
@@ -182,6 +188,11 @@ public class ManageScript : MonoBehaviour {
 
     void InstantiateLists()
     {
+        feedback.Add(GameObject.Find("richtig"));
+        feedback.Add(GameObject.Find("falsch"));
+
+        foreach (GameObject o in feedback) { o.SetActive(false); }
+
         textHighlights.Add(GameObject.Find("apple"));
         textHighlights.Add(GameObject.Find("salad"));
         textHighlights.Add(GameObject.Find("salt"));
