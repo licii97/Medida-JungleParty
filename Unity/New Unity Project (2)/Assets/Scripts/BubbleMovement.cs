@@ -19,9 +19,8 @@ public class BubbleMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		/*float newpos = Time.time * speed;
-		transform.position = pos + Vector2.left * newpos;*/	
-		float movspeed = speed * move;	
+        speed = scrolling.scrollSpeed;
+        float movspeed = speed * move;	
 		rb2d.AddForce(Vector2.left * movspeed);
 	}
 }
