@@ -6,13 +6,17 @@ using UnityEngine;
 public class Scrolling : MonoBehaviour {
 
 	public float scrollSpeed;
-    	public float tileSizex;
+    public float minSpeed;
+    public float maxSpeed;
+    public float tileSizex;
 	public GameObject Progressbar;
 	public float change;
 	public static Scrolling Instance;
 	private float grace = 0.0f;
 	private Progress progress;
-    	private Vector2 startPosition;
+    private Vector2 startPosition;
+    private float overflow = 0;
+
 
 	void Awake(){
 		Instance = this;
@@ -25,7 +29,7 @@ public class Scrolling : MonoBehaviour {
 
    	void FixedUpdate ()
   	{
-     	 	float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizex);
+     	float newPosition = Mathf.Repeat(Time.time  * scrollSpeed, tileSizex);
 		if (newPosition < 0.1 && Time.time > grace + 0.5f){
 			progress = Progressbar.GetComponent<Progress>();
 			progress.LevelProgress();
@@ -45,10 +49,40 @@ public class Scrolling : MonoBehaviour {
     	}
 	public void speedUp(){
 
-		scrollSpeed = scrollSpeed + change;
+        Vector2 correctposition = transform.position;
+        float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizex);
+        overflow = overflow + newPosition;
+        if (overflow >= tileSizex) {
+            correctposition = correctposition - Vector2.left * overflow;
+            overflow = 0;
+        }
+
+
+        startPosition = correctposition;
+
+
+        if (scrollSpeed < maxSpeed)
+        {
+            scrollSpeed = scrollSpeed + change;
+        }
 	}
 	public void speedDown(){
 
-		scrollSpeed = scrollSpeed - change;
+        Vector2 correctposition = transform.position;
+        float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizex);
+        overflow = overflow + newPosition;
+        if (overflow >= tileSizex)
+        {
+            correctposition = correctposition - Vector2.left * overflow;
+            overflow = 0;
+        }
+
+        startPosition = transform.position;
+
+
+        if (scrollSpeed > minSpeed)
+        {
+            scrollSpeed = scrollSpeed - change;
+        }
 	}
 }
