@@ -19,11 +19,8 @@ public class ManageScript : MonoBehaviour {
     public List<GameObject> gameDonePage = new List<GameObject>();
     public List<GameObject> textHighlights = new List<GameObject>();
     public List<GameObject> feedback = new List<GameObject>();
-
     public ManageLevel manageLevel; 
 
-
-    // Use this for initialization
     void Start() {
         SetLeavesActive();
         InstantiateLists();
@@ -33,7 +30,6 @@ public class ManageScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         if (endGameCounter == 0)
         {
             foreach (GameObject o in gameDonePage)
@@ -41,10 +37,10 @@ public class ManageScript : MonoBehaviour {
                 o.SetActive(true);
             }
             if (Input.GetMouseButtonDown(0))
-            {
+            {   
                 RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
                 if (hit.collider.gameObject.name == "levelBack")
-                {
+                {	
                     SceneManager.LoadScene("Leveluebersicht");
                 }
             }
@@ -72,7 +68,6 @@ public class ManageScript : MonoBehaviour {
             //GameObject.Find("leave 2").SetActive(false);
         }
 
-        // 0 = linke Maustaste
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
             foreach (GameObject o in feedback) { o.SetActive(false); }
