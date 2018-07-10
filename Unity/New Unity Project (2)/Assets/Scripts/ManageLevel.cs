@@ -99,6 +99,12 @@ public class ManageLevel : MonoBehaviour {
                         print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
                         SceneManager.LoadScene("Fisch_Level");
                         break;
+                    case ("Trophae"):
+                        SceneManager.LoadScene("Belohnung");
+                        break;
+                    case ("EndlevelStern"):
+                        //SceneManager.LoadScene("Endlevel");
+                        break;
                 }
             }
 

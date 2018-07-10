@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Affe_Wohnung.unity
+- path: Assets/Scenes/Leveluebersicht.unity
   isLoaded: 1
   isActive: 1
