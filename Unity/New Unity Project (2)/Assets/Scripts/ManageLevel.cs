@@ -82,7 +82,7 @@ public class ManageLevel : MonoBehaviour {
                     case ("Insel2"):
                         PlayerPrefs.SetInt("anzahlLevel", 3);
                         print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
-                        SceneManager.LoadScene("scene00");
+                        SceneManager.LoadScene("Affe_Wohnung");
                         break;
                     case ("Weg2"):
                         PlayerPrefs.SetInt("anzahlLevel", 4);
