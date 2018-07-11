@@ -59,12 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\InputSkript.cs" />
     <Compile Include="Assets\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Belohnungssystem.cs" />
     <Compile Include="Assets\Scripts\BubbleMovement.cs" />
     <Compile Include="Assets\Scripts\BubbleSpawner.cs" />
     <Compile Include="Assets\Scripts\destroybubble.cs" />
     <Compile Include="Assets\Scripts\feedback.cs" />
+    <Compile Include="Assets\Scripts\ManageAnimalScript.cs" />
     <Compile Include="Assets\Scripts\ManageLevel.cs" />
     <Compile Include="Assets\Scripts\ManageScript.cs" />
     <Compile Include="Assets\Scripts\playerController.cs" />

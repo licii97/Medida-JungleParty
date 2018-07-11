@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Startbildschirm.unity
+- path: Assets/Scenes/Affe_Tiere.unity
   isLoaded: 1
   isActive: 1

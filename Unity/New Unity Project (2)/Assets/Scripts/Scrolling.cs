@@ -16,6 +16,7 @@ public class Scrolling : MonoBehaviour {
 	private Progress progress;
     private Vector2 startPosition;
     private float overflow = 0;
+    private float startspeed;
 
 
 	void Awake(){
@@ -25,11 +26,12 @@ public class Scrolling : MonoBehaviour {
     	void Start ()
     	{
         	startPosition = transform.position;
+        startspeed = scrollSpeed;
     	}
 
    	void FixedUpdate ()
   	{
-     	float newPosition = Mathf.Repeat(Time.time  * scrollSpeed, tileSizex);
+     	float newPosition = Mathf.Repeat(Time.time  * startspeed, tileSizex);
 		if (newPosition < 0.1 && Time.time > grace + 0.5f){
 			progress = Progressbar.GetComponent<Progress>();
 			progress.LevelProgress();
@@ -49,7 +51,7 @@ public class Scrolling : MonoBehaviour {
     	}
 	public void speedUp(){
 
-        Vector2 correctposition = transform.position;
+        /*Vector2 correctposition = transform.position;
         float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizex);
         overflow = overflow + newPosition;
         if (overflow >= tileSizex) {
@@ -58,7 +60,7 @@ public class Scrolling : MonoBehaviour {
         }
 
 
-        startPosition = correctposition;
+        startPosition = correctposition;*/
 
 
         if (scrollSpeed < maxSpeed)
@@ -68,7 +70,7 @@ public class Scrolling : MonoBehaviour {
 	}
 	public void speedDown(){
 
-        Vector2 correctposition = transform.position;
+        /*Vector2 correctposition = transform.position;
         float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizex);
         overflow = overflow + newPosition;
         if (overflow >= tileSizex)
@@ -78,7 +80,7 @@ public class Scrolling : MonoBehaviour {
         }
 
         startPosition = transform.position;
-
+        */
 
         if (scrollSpeed > minSpeed)
         {
