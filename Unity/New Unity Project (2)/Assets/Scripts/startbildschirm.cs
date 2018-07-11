@@ -8,20 +8,19 @@ public class startbildschirm : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        //PlayerPrefs.SetInt("anzahlLevel", 0);
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            print("HI");
             RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
 
             if (hit.collider != null)
             {
-                print("collided");
                 switch (hit.collider.gameObject.name)
                 {
                     case ("Start"):

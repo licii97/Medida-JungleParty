@@ -36,10 +36,10 @@ public class Belohnungssystem : MonoBehaviour {
         {
             RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
 
-            /**if (hit.collider.gameObject.name=="exit")
+            if (hit.collider.gameObject.name=="exit")
             {
                 SceneManager.LoadScene("Leveluebersicht");
-            }*/
+            }
         }
     }
 

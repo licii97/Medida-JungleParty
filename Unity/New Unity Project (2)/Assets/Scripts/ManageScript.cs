@@ -73,6 +73,10 @@ public class ManageScript : MonoBehaviour {
             foreach (GameObject o in feedback) { o.SetActive(false); }
 
             if (hit.collider != null) {
+                if (hit.collider.gameObject.name == "exit")
+                {
+                    SceneManager.LoadScene("Leveluebersicht");
+                }
                 //print("Name: " + hit.collider.gameObject.name);
                 //print("Tag: " + hit.collider.gameObject.tag);
                 if (hit.collider.gameObject.tag == "text") {

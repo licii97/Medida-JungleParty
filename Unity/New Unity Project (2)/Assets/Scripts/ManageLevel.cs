@@ -35,24 +35,6 @@ public class ManageLevel : MonoBehaviour {
         {
             layerOne[i].SetActive(true); 
         }
-        /**switch (anzahlLevel)
-        {
-            case 1:
-                layerOne[1].SetActive(true);
-                break;
-            case 2:
-                layerOne[2].SetActive(true);
-                break;
-            case 3:
-                layerOne[3].SetActive(true);
-                break;
-            case 4:
-                layerOne[4].SetActive(true);
-                break;
-            case 5:
-                layerOne[5].SetActive(true);
-                break;            
-        }*/
 
         // 0 = linke Maustaste
         if (Input.GetMouseButtonDown(0))
@@ -62,47 +44,43 @@ public class ManageLevel : MonoBehaviour {
             if (hit.collider != null)
             {
 
-                /**if (anzahlLevel5 && hit.collider.gameObject.name == layerOne[anzahlLevel].name)
-                {
-                    anzahlLevel++;
-                }*/
-
                 switch (hit.collider.gameObject.name)
                 {
                     case ("Insel1"):
                         PlayerPrefs.SetInt("anzahlLevel", 1);
-                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
+                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
                         SceneManager.LoadScene("scene00");
                         break;
                     case ("Weg1"):
                         PlayerPrefs.SetInt("anzahlLevel", 2);
-                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
+                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
                         SceneManager.LoadScene("Fisch_Level");
                         break;
                     case ("Insel2"):
                         PlayerPrefs.SetInt("anzahlLevel", 3);
-                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
+                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
                         SceneManager.LoadScene("Affe_Wohnung");
                         break;
                     case ("Weg2"):
                         PlayerPrefs.SetInt("anzahlLevel", 4);
-                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
+                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
                         SceneManager.LoadScene("Fisch_Level");
                         break;
                     case ("Insel3"):
                         PlayerPrefs.SetInt("anzahlLevel", 5);
-                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
+                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
                         SceneManager.LoadScene("scene00");
                         break;
                     case ("Weg3"):
                         PlayerPrefs.SetInt("anzahlLevel", 6);
-                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 10000));
+                        print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
                         SceneManager.LoadScene("Fisch_Level");
                         break;
                     case ("Trophae"):
                         SceneManager.LoadScene("Belohnung");
                         break;
                     case ("EndlevelStern"):
+                        print("hier muss Selina noch das ENdlevel einfügen");
                         //SceneManager.LoadScene("Endlevel");
                         break;
                 }

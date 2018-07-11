@@ -27,7 +27,7 @@ public class RoomManagerScript : MonoBehaviour {
     }
 
     void Update () {
-        print(endGameCounter);
+        //print(endGameCounter);
         if (endGameCounter == 2)
         {
             foreach (GameObject o in gameDonePage)
@@ -64,12 +64,19 @@ public class RoomManagerScript : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            //print("MAYDAY! mouse down!! i repeat: MOUSE DOWN!!!");
             RaycastHit2D hit = GetHitFromMousePosition(Input.mousePosition);
+
+            //print("MAYDAY! mouse down!! i repeat: MOUSE DOWN!!!");
+          
             foreach (GameObject o in feedback) { o.SetActive(false); }
 
             if (hit.collider != null)
             {
+                if (hit.collider.gameObject.name == "exit")
+                {
+                    SceneManager.LoadScene("Leveluebersicht");
+                } 
+
                 //print("Name: " + hit.collider.gameObject.name);
                 if (hit.collider.gameObject.tag == "text")
                 {

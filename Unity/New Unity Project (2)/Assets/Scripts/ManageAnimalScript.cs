@@ -36,7 +36,7 @@ public class ManageAnimalScript : MonoBehaviour
         {
             foreach (GameObject o in gameDonePage)
             {
-               // o.SetActive(true);
+               o.SetActive(true);
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -77,7 +77,11 @@ public class ManageAnimalScript : MonoBehaviour
 
             if (hit.collider != null)
             {
-                print("Name: " + hit.collider.gameObject.name);
+                if (hit.collider.gameObject.name == "exit")
+                {
+                    SceneManager.LoadScene("Leveluebersicht");
+                }
+                //print("Name: " + hit.collider.gameObject.name);
                 //print("Tag: " + hit.collider.gameObject.tag);
                 if (hit.collider.gameObject.tag == "text")
                 {
