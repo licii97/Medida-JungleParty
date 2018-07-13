@@ -52,12 +52,16 @@ public class playerController : MonoBehaviour {
 		if(col.gameObject.tag == "Right"){
 			scrolling.speedUp();
 			right++;
+            progress.progress = progress.progress + progress.progressrate;
             Instantiate(yay, col.transform.position, rotation);
             Destroy (col.gameObject);
 		}
 		else if(col.gameObject.tag == "Wrong"){
 			scrolling.speedDown();
-            progress.progress = progress.progress - 2;
+            if (progress.progress >= 5)
+            {
+                progress.progress = progress.progress - 2;
+            }
             progress.updateBar();
             Instantiate(nay,col.transform.position,rotation);
 			Destroy (col.gameObject);

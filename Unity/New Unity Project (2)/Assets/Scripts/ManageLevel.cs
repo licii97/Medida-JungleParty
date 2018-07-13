@@ -64,7 +64,7 @@ public class ManageLevel : MonoBehaviour {
                     case ("Weg2"):
                         PlayerPrefs.SetInt("anzahlLevel", 4);
                         print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
-                        SceneManager.LoadScene("Fisch_Level");
+                        SceneManager.LoadScene("Fisch_Level2");
                         break;
                     case ("Insel3"):
                         PlayerPrefs.SetInt("anzahlLevel", 5);
@@ -74,7 +74,7 @@ public class ManageLevel : MonoBehaviour {
                     case ("Weg3"):
                         PlayerPrefs.SetInt("anzahlLevel", 6);
                         print("anzahlLevel im update" + PlayerPrefs.GetInt("anzahlLevel", 0));
-                        SceneManager.LoadScene("Fisch_Level");
+                        SceneManager.LoadScene("Fisch_Level3");
                         break;
                     case ("Trophae"):
                         SceneManager.LoadScene("Belohnung");

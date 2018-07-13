@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Belohnung.unity
     guid: de94fa8e3200f8d4a8560fe9d3a60910
+  - enabled: 1
+    path: Assets/Scenes/Fisch_Level2.unity
+    guid: 89d6935f7e0306d47aa9db72838aac3f
+  - enabled: 1
+    path: Assets/Scenes/Fisch_Level3.unity
+    guid: 6ea7df53b3d4a754cbf29a63bee27875
   m_configObjects: {}
